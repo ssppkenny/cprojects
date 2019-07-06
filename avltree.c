@@ -313,12 +313,12 @@ int insert_helper(avltree_t** tree, int value) {
 int main() {
 
     avltree_t* tree = NULL;
-    for (int i = 0; i<1000; i++) {
+    for (int i = 0; i<100000; i++) {
         insert(&tree, i);
     }
 
 
-    for (int i = 0; i<500; i++) {
+    for (int i = 0; i<50000; i++) {
         delete(&tree, i);
     }
 
