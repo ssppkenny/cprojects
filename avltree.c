@@ -85,17 +85,6 @@ static PyTypeObject AvltreeType = {
 	.tp_methods = Custom_methods,
 };
 
-static void
-Avltree_dealloc(avltree_t *self) {
-	Py_TYPE(self)->tp_free((PyObject *) self);
-}
-
-static PyObject *
-Avltree_new(PyTypeObject *type, PyObject *args, PyObject *kwds){
-	avltree_t *self;
-	self = (avltree_t *) type->tp_alloc(type, 0);
-	return (PyObject *) self;
-}
 
 static PyModuleDef avltreemodule = {
 	PyModuleDef_HEAD_INIT,
@@ -191,13 +180,13 @@ void delete(struct avltree** bt, int value) {
 			(*bt) = (*bt)->left;
 			(*bt)->lh = size((*bt)->left);
 			(*bt)->rh = size((*bt)->right);
-			(*bt)->lh + (*bt)->rh + 1;
+			//(*bt)->lh + (*bt)->rh + 1;
 		} else if ((*bt)->left == NULL && (*bt)->right !=NULL) {
 			free((*bt));
 			(*bt) = (*bt)->right;
 			(*bt)->lh = size((*bt)->left);
 			(*bt)->rh = size((*bt)->right);
-			(*bt)->lh + (*bt)->rh + 1;
+			//(*bt)->lh + (*bt)->rh + 1;
 		} else {
 			int v = (*bt)->value;
 			struct avltree* r = remove_min((*bt)->right, &v);
@@ -205,7 +194,7 @@ void delete(struct avltree** bt, int value) {
 			(*bt)->right = r;
 			(*bt)->lh = size((*bt)->left);
 			(*bt)->rh = size((*bt)->right);
-			(*bt)->lh + (*bt)->rh + 1;
+			//(*bt)->lh + (*bt)->rh + 1;
 		}
 	}
 }

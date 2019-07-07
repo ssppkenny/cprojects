@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/sergey/code/cpp/cprojects/avltree.c" "/home/sergey/code/cpp/cprojects/CMakeFiles/avltree.dir/avltree.c.o"
+  "/Users/sergey/code/cprojects/avltree.c" "/Users/sergey/code/cprojects/CMakeFiles/avltree.dir/avltree.c.o"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "avltree"
-  "/usr/include/python3.7m"
+  "/usr/local/Frameworks/Python.framework/Versions/3.6/include/python3.6m"
   )
 
 # Targets to which this target links.
