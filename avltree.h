@@ -1,3 +1,4 @@
+#include <Python.h>
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
@@ -13,6 +14,13 @@ typedef struct avltree {
 	struct avltree* right;
 } avltree_t;
 
+typedef struct set {
+	PyObject_HEAD
+    struct avltree* tree;
+} set_t;
+
+void fill_list_rec(struct avltree* tree, PyObject* list, int* c);
+void fill_list(struct avltree* tree, PyObject* list);
 void insert(avltree_t** tree, int value);
 int insert_helper(avltree_t** tree, int value);
 struct avltree* rebalance(struct avltree* tree);

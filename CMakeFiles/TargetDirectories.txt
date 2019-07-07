@@ -1,0 +1,3 @@
+/home/sergey/code/cpp/cprojects/CMakeFiles/rebuild_cache.dir
+/home/sergey/code/cpp/cprojects/CMakeFiles/avltree.dir
+/home/sergey/code/cpp/cprojects/CMakeFiles/edit_cache.dir

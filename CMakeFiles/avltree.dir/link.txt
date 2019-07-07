@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/avltree.dir/avltree.c.o  -o avltree /usr/lib/libpython3.7m.so 
