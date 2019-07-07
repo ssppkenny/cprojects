@@ -1,3 +1,6 @@
+#ifndef AVLTREE_H
+#define AVLTREE_H
+
 #include <Python.h>
 #include <stdio.h>
 #include <stddef.h>
@@ -34,4 +37,6 @@ struct avltree* rotate_left(struct avltree* tree);
 struct avltree* rotate_right(struct avltree* tree);
 struct avltree* rotate_double_left(struct avltree* tree);
 struct avltree* rotate_double_right(struct avltree* tree);
+
+#endif
 
