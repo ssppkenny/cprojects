@@ -1,5 +1,17 @@
 import avltree
+import random
 import pytest
+
+def test_random():
+	t = avltree.Avltree()
+	print(t.size())
+	for i in range(1000):
+		n = random.randint(1,10000)
+		t.add(n)
+	l = t.tolist()
+	for m in l:
+		t.remove(m)
+	assert t.size() == 0
 
 def test_emptytolist():
 	t = avltree.Avltree()

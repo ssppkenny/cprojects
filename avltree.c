@@ -265,6 +265,9 @@ struct avltree* rebalance(struct avltree* tree) {
 	tree->right = right;
 	tree->size = size(left) + size(right) + 1;
 	tree = rotate(tree);
+	left = tree->left;
+	right = tree->right;
+	tree->size = size(left) + size(right) + 1;
 	return tree;
 }
 
