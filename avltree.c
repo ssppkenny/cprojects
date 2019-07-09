@@ -1,7 +1,7 @@
 #include "avltree.h"
 #define HEIGHT 2
 #define PY_SSIZE_T_CLEAN
-
+#define Py_LIMITED_API 0x03030000
 static PyObject *
 Avltree_contains(set_t *self, PyObject* value) {
 	int check_int = PyLong_Check(value);
@@ -56,19 +56,19 @@ Avltree_add(set_t *self, PyObject* value) {
 
 static PyMethodDef Custom_methods[] = {
 	{"add", (PyCFunction) Avltree_add, METH_O,
-		"Return the name, combining the first and last name"
+		"inserts an integer into the set"
 	},
 	{"contains", (PyCFunction) Avltree_contains, METH_O,
-		"Return the name, combining the first and last name"
+		"returns True if the set contains the number otherwise False"
 	},
 	{"remove", (PyCFunction) Avltree_remove, METH_O,
-		"Return the name, combining the first and last name"
+		"removes a number from the set"
 	},
 	{"size", (PyCFunction) Avltree_size, METH_NOARGS,
-		"Return the name, combining the first and last name"
+		"returns the size of the set"
 	},
 	{"tolist", (PyCFunction) Avltree_tolist, METH_NOARGS,
-		"Return the name, combining the first and last name"
+		"returns a sorted list containing all the elements from the set"
 	},
 	{NULL}  /* Sentinel */
 };
