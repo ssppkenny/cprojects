@@ -17,6 +17,15 @@ def test_emptytolist():
     t = avltree.Avltree()
     assert t.tolist() == []
 
+def test_doubleadd():
+    t = avltree.Avltree()
+
+    for i in range(1000):
+        t.add(i)
+    for i in range(1000):
+        t.add(i)
+    assert t.size() == 1000
+
 def test_sizeafteradd1000():
     t = avltree.Avltree()
 
