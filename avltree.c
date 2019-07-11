@@ -1,7 +1,6 @@
 #include "avltree.h"
 #define HEIGHT 2
 #define PY_SSIZE_T_CLEAN
-#define Py_LIMITED_API 0x03030000
 static PyObject *
 Avltree_contains(set_t *self, PyObject* value) {
 	int check_int = PyLong_Check(value);
@@ -157,7 +156,7 @@ struct avltree* remove_min(struct avltree* bt, int* v) {
 }
 
 void delete(struct avltree** bt, int value) {
-	if (bt == NULL) {
+	if (bt == NULL || (*bt) == NULL) {
 		return;
 	} else if (value < (*bt)->value) {
 		delete(&(*bt)->left, value);
@@ -173,19 +172,20 @@ void delete(struct avltree** bt, int value) {
 		return;
 	} else {
 		if ((*bt)->left == NULL && (*bt)->right == NULL) {
-			free((*bt));
+			//free((*bt));
 			(*bt) = NULL;
 		} else if ((*bt)->left != NULL && (*bt)->right == NULL) {
-			free((*bt));
+			//free((*bt));
 			(*bt) = (*bt)->left;
 			(*bt)->lh = size((*bt)->left);
 			(*bt)->rh = size((*bt)->right);
-			//(*bt)->lh + (*bt)->rh + 1;
+			(*bt)->size = (*bt)->lh + (*bt)->rh + 1;
 		} else if ((*bt)->left == NULL && (*bt)->right !=NULL) {
-			free((*bt));
+			//free((*bt));
 			(*bt) = (*bt)->right;
 			(*bt)->lh = size((*bt)->left);
 			(*bt)->rh = size((*bt)->right);
+			(*bt)->size = (*bt)->lh + (*bt)->rh + 1;
 			//(*bt)->lh + (*bt)->rh + 1;
 		} else {
 			int v = (*bt)->value;
@@ -194,6 +194,7 @@ void delete(struct avltree** bt, int value) {
 			(*bt)->right = r;
 			(*bt)->lh = size((*bt)->left);
 			(*bt)->rh = size((*bt)->right);
+			(*bt)->size = (*bt)->lh + (*bt)->rh + 1;
 			//(*bt)->lh + (*bt)->rh + 1;
 		}
 	}
@@ -446,17 +447,18 @@ int insert_helper(avltree_t** tree, int value) {
 int main() {
 
 	avltree_t* tree = NULL;
+    int N = 500000;
+    for (int i=0;i<N;i++) {
+        insert(&tree,i);
+    }
+    for (int i=0;i<N;i++) {
+        delete(&tree,i);
+    }
+//    for (int i=0;i<N;i++) {
+  //      insert(&tree,i);
+  //  }
 
-    insert(&tree,1);
-    insert(&tree,2);
-    insert(&tree,3);
-    insert(&tree,5);
-    insert(&tree,200);
 
-	print(tree);
 
-	printf("\n");
-	printf("%d\n", size(tree));
-	printf("%d\n", contains(tree, 56));
 
 }
