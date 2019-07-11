@@ -172,7 +172,7 @@ void delete(struct avltree** bt, int value) {
 		return;
 	} else {
 		if ((*bt)->left == NULL && (*bt)->right == NULL) {
-			//free((*bt));
+			free((*bt));
 			(*bt) = NULL;
 		} else if ((*bt)->left != NULL && (*bt)->right == NULL) {
 			//free((*bt));
@@ -447,7 +447,7 @@ int insert_helper(avltree_t** tree, int value) {
 int main() {
 
 	avltree_t* tree = NULL;
-    int N = 500000;
+    int N = 1000000;
     for (int i=0;i<N;i++) {
         insert(&tree,i);
     }
